@@ -1,0 +1,177 @@
+@import '../media.scss';
+
+@mixin shadow(){
+    box-shadow: 0 2px 5px #bbb; 
+}
+
+
+.header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    box-shadow: 0 2px 5px #bbb;
+}
+
+.header-nav{
+    display: grid;
+    grid-template-columns: 80% 20%;
+    grid-template-areas: 
+    "logo-container menu-container"
+    "search-container search-container";
+}
+
+.logo{
+    font-size: 25px;
+    text-transform: uppercase;
+    color: #000;
+    font-weight: 700;
+    grid-area: logo-container;
+    padding: 10px;
+    white-space: nowrap;
+}
+
+.search{
+    padding: 0 10px 10px 10px;
+    grid-area: search-container;
+}
+
+.search input{
+    width: 100%;
+    height: 30px;
+}
+
+.menu{
+    padding: 10px;
+    grid-area: menu-container;   
+}
+
+.header label{
+    display: initial; 
+}
+
+.navigation{
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    display: none;
+    box-shadow: 0 4px 8px #bbb;
+    grid-area: navigation-container; 
+}
+
+.navigation ul li a{
+    text-decoration: none;
+    padding: 8px 30px 8px 10%;
+    color: #000;
+    display: block;
+}
+
+.navigation ul li:hover{
+    box-shadow: 0 4px 8px #bbb;
+}
+
+.navigation ul li:hover > ul{
+    display: initial;
+}
+
+.navigation ul li ul{
+    display: none;
+}
+
+.navigation ul li ul li{
+    list-style: none;
+    padding-left: 50px;
+    border-bottom: 1px solid #eee;
+}
+
+.navigation ul li ul li span{
+    float: right;
+    padding: 4px 10px;
+    font-size: 14px;
+}
+
+input[type="checkbox"]{
+    display: none;
+}
+
+#toggle:checked ~ .navigation{
+    display: block;
+}
+
+@include tablet{
+    .header-nav{
+        margin: auto;
+        max-width: 1300px;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    .logo {
+        display: flex;
+        align-items: center;
+        font-size: 25px;
+        text-transform: uppercase;
+        color: #000;
+        font-weight: 700;
+    }
+
+    .menu{
+        display: none;
+    }
+
+    .search{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        padding: 0;
+    }
+
+    .navigation{
+        display: contents;
+    }
+
+    .navigation ul{
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+    }
+
+    .navigation ul li{
+        width: 100%;
+        position: relative;
+    }
+
+    .navigation ul li a{
+        display: block;
+        font-size: 16px;
+        color: #000;
+        text-decoration: none;
+        padding: 12px;
+        transition: all .2s ease;
+    }
+
+    .navigation ul li ul{
+        position: absolute;
+        width: 300px;
+        right: 0;
+        background-color: #fff;
+        box-shadow: 0 4px 8px #bbb;
+    }
+
+    .navigation ul li ul li{
+        position: relative;
+        padding: 0;
+    } 
+
+    .navigation ul li ul li ul {
+        position: absolute;
+        top: 0;
+        right: 300px;
+    }
+    
+    span{
+        font-size: 14px;
+    }
+
+}
